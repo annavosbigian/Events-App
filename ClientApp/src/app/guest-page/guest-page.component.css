@@ -1,0 +1,18 @@
+.view {
+  margin-left: 10px;
+}
+
+.all {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.clickEvent {
+  font-weight: 300;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.pushDown{
+    margin-bottom: 25px;
+}

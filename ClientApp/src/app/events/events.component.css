@@ -1,0 +1,34 @@
+body {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.events {
+  border-right: 1px solid black;
+  margin-top: 0;
+  text-align: right;
+}
+
+li {
+    color: darkblue;
+    list-style-type: none;
+}
+
+li:hover {
+    cursor: pointer;
+}
+
+.clickEvent{
+    font-weight: 300;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.clickEvent:hover{
+    font-weight: bold;
+}
+
+
+.shiftDown{
+    margin-top: 50px;
+}

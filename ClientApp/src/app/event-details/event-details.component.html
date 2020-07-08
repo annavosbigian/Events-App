@@ -1,0 +1,63 @@
+  <div *ngIf="event">
+
+
+    <div>
+      <h3>
+        {{event.title}} {{event.publish ? '(Published)' : '(Unpublished)'}}
+      </h3>
+      <label>
+        <b>Date: </b>{{event.date | date}}
+      </label>
+      <br />
+      <label>
+        <b>Time: </b>{{event.date | date:'shortTime'}}<br />
+      </label>
+      <br />
+      <label>
+        <b>Location: </b> {{event.locationName}}
+      </label>
+      <br />
+      <label>
+        <b>Address: </b> {{event.address1}}<span *ngIf="event.address2">, {{event.address2}}</span>
+      </label>
+      <br />
+      <label>
+        <b>Max Friends per Guest: </b>{{event.friends}}
+      </label>
+      <br />
+      <label>
+        <b>Details: </b>{{event.details}}
+      </label>
+      <br />
+      <label>
+        <b>URL: </b>{{eventService.URL}}
+      </label>
+      <br />
+      <ng-template #content let-modal>
+        <!--<button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>-->
+        <img class="modalImg" [src]="eventService.openImgPath(event.imgPath)" alt="No Image" />
+
+      </ng-template>
+
+      <label *ngIf="event.imgPath">
+        <b>Image: </b><img class="thumb" [src]="eventService.openImgPath(event.imgPath)" alt="No Image" style="margin-bottom:15px;" (click)="open(content)" />
+      </label>
+
+
+    </div>
+
+  <button class="btn btn-primary" (click)="populateForm(event)">
+    {{event.publish ? 'Edit Event' : 'Edit/Publish'}}
+  </button>
+
+  <button class="btn btn-danger" (click)="onDelete(event.eventId)">Delete Event</button>
+    <br />
+
+  <button class="btn btn-info" (click)="dataService.openData()">View Data</button>
+
+  <button *ngIf="event.publish" class="btn btn-success" (click)="openInvite()"> <!--routerLink="{{event.eventId}}"-->View Invite</button>
+
+
+</div>

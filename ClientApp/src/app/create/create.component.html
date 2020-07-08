@@ -1,0 +1,78 @@
+<app-nav-menu></app-nav-menu>
+
+<div class="container">
+
+  <h2 class="center">EVENT INFO</h2>
+
+  <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+    <input type="hidden" name="eventId" [value]="eventService.eventData.eventId" />
+    <div class="form-group">
+      <label>Event Title</label>
+      <input name="title" #title="ngModel" [(ngModel)]="eventService.eventData.title" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+      <label>Date & Time</label> {{eventService.eventData.date | date:'medium'}} <button class="pango-orange btn btn-sm" type="button" (click)="viewCal()">{{showCal ? 'Hide Calendar' : 'View Calendar'}}</button>
+    </div>
+
+    <div *ngIf="showCal" class="container time">
+      <dl-date-time-picker startView="day"
+                           maxView="year"
+                           minView="minute"
+                           minuteStep="15"
+                           name="date" #date="ngModel" [(ngModel)]="eventService.eventData.date">
+      </dl-date-time-picker>
+    </div>
+
+    <div class="form-group">
+      <label>Location Name</label>
+      <input name="locationName" #locationName="ngModel" [(ngModel)]="eventService.eventData.locationName" class="form-control" />
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label>Address Line One</label>
+          <input name="address1" #address1="ngModel" [(ngModel)]="eventService.eventData.address1" class="form-control" />
+        </div>
+      </div>
+      <div class="col">
+
+        <div class="form-group">
+          <label>Address Line Two</label>
+          <input name="address2" #address2="ngModel" [(ngModel)]="eventService.eventData.address2" class="form-control" />
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Extra Friends per Guest</label>
+      <input placeholder="#" type="number" min="0" name="friends" #friends="ngModel" [(ngModel)]="eventService.eventData.friends" class="form-control number" />
+    </div>
+
+    <div class="form-group">
+      <label>Details</label>
+      <input rows="4" name="details" #details="ngModel" [(ngModel)]="eventService.eventData.details" class="form-control" />
+    </div>
+
+    <app-upload [image]="eventService.eventData.imgPath" (onUploadFinished)="uploadFinished($event)"></app-upload>
+
+    <div class="form-group">
+      <label>Publish Invitation? </label>
+      <label class="form-check-inline response normal">
+        Yes
+        <input type="radio" name="publish" #publish="ngModel" [(ngModel)]="eventService.eventData.publish" [value]="true" class="form-control" required />
+      </label>
+      <label class="form-check-inline response normal">
+        No
+        <input type="radio" name="publish" #publish="ngModel" [(ngModel)]="eventService.eventData.publish" [value]="false" class="form-control" required />
+      </label>
+    </div>
+
+    <div class="form-group center">
+      <button type="submit" class="submit btn pango-green ">{{eventService.eventData.eventId > 0 ? 'Submit Changes' : 'Create Event'}}</button>
+    </div>
+  </form>
+</div>
+
+

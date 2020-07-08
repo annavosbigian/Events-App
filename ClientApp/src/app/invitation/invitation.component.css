@@ -1,0 +1,71 @@
+.invitation{
+    margin-top: 20px;
+}
+
+.divider {
+  border-right: 1px solid black;
+}
+img {
+    margin-top: 20px;
+  max-width: 100%;
+  height: auto;
+}
+
+.smallImg{
+    max-width: 40px;
+    height: auto;
+}
+
+.btn{
+    border-radius: 0;
+}
+
+.btn:hover{
+    cursor: pointer;
+}
+
+.moveUp{
+    top: 0px;
+}
+
+.rsvp {
+    margin-top: 20px;
+}
+.response {
+    margin-left: 15px;
+}
+
+input[type=radio] {
+  width: 20px;
+  height: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+.down {
+    margin-top: 6px;
+}
+.normal {
+    font-weight: normal;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+input.ng-touched.ng-invalid{
+    border-color: orangered;
+}
+
+.forceInline{
+    display: inline-block;
+}
+
+
+
+footer {
+  margin: auto;
+  width: 50%;
+  position: absolute;
+  bottom: 0;
+}

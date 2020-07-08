@@ -1,0 +1,23 @@
+<div *ngIf="eventService.eventData">
+  <div class="row">
+    <div *ngIf="eventService.eventData.imgPath">
+      <div class="col-md-4">
+        <img class="thumb" [src]="eventService.openImgPath(eventService.eventData.imgPath)" />
+      </div>
+    </div>
+    <div class="col-md-8">
+      <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;" multiple>
+      <button type="button" class="inline btn btn-sm -blue" (click)="file.click()">{{eventService.eventData.imgPath ? "Replace Photo" : "Upload Photo"}}</button>
+      <div *ngIf="eventService.eventData.imgPath">
+        <button type="button" class="inline btn btn-sm btn-danger" (click)="deleteImg()">Remove Image</button>
+      </div>
+      <span class="inline upload" *ngIf="message">
+        {{message}}
+      </span>
+    </div>
+  </div>
+</div>
+<!--
+
+
+-->

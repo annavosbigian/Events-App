@@ -1,0 +1,56 @@
+<app-nav-menu></app-nav-menu>
+
+<div class="all">
+  <h1 class="center">{{showAll ? 'All Guests' : 'Guests'}}</h1>
+
+  <!--Button for showing all guests
+    Button for specific events
+    Goes to a page that lets you select by event like the -->
+  <div class="center pushDown">
+    <button class="-blue btn" (click)="showAll = false">By Event</button>
+    <button class="-green btn" (click)="showAll = true">All Guests</button>
+  </div>
+  <div *ngIf="!showAll">
+    <div class="row">
+      <div class="events col-md-2">
+        <h2>Events</h2>
+        <h4 class="clickEvent" *ngFor="let event of eventService.list" (click)="onSelect(event)">{{event.title}}</h4>
+      </div>
+
+      <div *ngIf="eventTitle" class="col-md-9">
+        <h3 class="center">{{eventTitle}}</h3>
+          <app-guests [eventId]="selectedEventId" [guests]="this.guestService.shortList"></app-guests>
+      </div>
+
+    </div>
+  </div>
+
+  <div *ngIf="showAll">
+    <table *ngIf="guestService.guestList" datatable class="table table-hover">
+      <thead>
+        <tr>
+          <th *ngFor="let header of headerElements" class="col-sm">{{header}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let guest of guestService.guestList">
+          <td width="20%">{{guest.name}}</td>
+          <td width="5%">{{guest.rsvp}}</td>
+          <td width="20%">{{guest.email}}</td>
+          <td width="25%">{{eventService.getName(guest.eventId)}}</td>
+          <td width="5%">{{guest.friends}}</td>
+          <td width="25%">{{guest.message}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <label>List all Emails</label>
+    <button class="view btn btn-sm -orange" (click)="showEmails()">View</button>
+    <div *ngIf="guestService.showEmails">
+      <br />
+      <textarea cols="50" rows="4">{{emailList}}</textarea>
+    </div>
+  </div>
+
+
+</div>

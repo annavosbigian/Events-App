@@ -1,0 +1,46 @@
+label {
+    font: bold;
+    font-size: 15px;
+}
+
+button {
+    margin-right: 25px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    width: 120px;
+}
+
+.thumb {
+  width: 50px;
+  height: auto;
+  cursor: pointer;
+}
+
+  .unformatted {
+  background: none;
+  color: blue;
+  text-decoration: underline;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.modalImg {
+  margin: auto;
+  display: block;
+  width: 100%;
+  max-width: 700px;
+}
+
+/*.close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+}*/

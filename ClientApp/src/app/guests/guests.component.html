@@ -1,0 +1,31 @@
+<div class="all">
+
+  <div *ngIf="guests">
+
+    <table datatable class="table table-hover">
+      <thead>
+        <tr>
+          <th *ngFor="let header of headerElements" class="col-sm">{{header}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let guest of guests">
+          <td>{{guest.name}}</td>
+          <td>{{guest.rsvp}}</td>
+          <td>{{guest.email}}</td>
+          <td>{{guest.friends}}</td>
+          <td>{{guest.message}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <label>List emails from confirmed attendees</label>
+    <button class="view btn btn-sm -orange" (click)="showYesEmails()">View</button>
+    <div *ngIf="guestService.showEmails">
+
+      <br />
+      <textarea cols="50" rows="4">{{emailList}}</textarea>
+      </div>
+
+    </div>
+  </div>

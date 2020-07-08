@@ -1,0 +1,80 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+/*OVERLAY*/
+@import '~@angular/cdk/overlay-prebuilt.css';
+
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.center {
+  text-align: center;
+}
+
+.right-border {
+  border-right: 1px solid black;
+}
+
+code {
+  color: #e01a76;
+}
+
+.form-control {
+  border-radius: 0;
+  border: 1px solid #eee;
+  transition: .3s border-color;
+}
+  .btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+#toast-container > div{
+    opacity: 1;
+}
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: 'Josefin Sans', sans-serif, "Helvetica Neue", sans-serif;
+}
+
+.-orange {
+  background-color: #F1963D;
+}
+
+.btn {
+  color: white;
+  border-color: white;
+  border-radius: 15px;
+  border-style: solid;
+}
+
+.btn:hover {
+  border-color: gainsboro;
+  color: white;
+  border-left-style: none;
+  border-top-style: none;
+}
+
+input {
+  border-radius: 30px;
+  border: 1px solid #eee;
+  transition: .3s border-color;
+}
+
+  input:hover {
+    border: 1px solid #aaa;
+  }
+
+.-green {
+  background-color: #A8CB50;
+}
+
+.-blue {
+  background-color: #516C8E;
+}

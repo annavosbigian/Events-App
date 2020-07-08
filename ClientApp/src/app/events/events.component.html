@@ -1,0 +1,22 @@
+<app-nav-menu></app-nav-menu>
+
+<div class="row">
+  <div class="events col-md-2">
+    <h2>Events</h2>
+    <h4 class="clickEvent" *ngFor="let event of eventService.list" (click)="onSelect(event)">{{event.title}}</h4>
+  </div>
+
+  <div class="col-md-9">
+    <ng-template #showEvent>
+
+      <app-event-details [event]="selectedEvent"></app-event-details>
+      </ng-template>
+      <div *ngIf="dataService.showData; else showEvent">
+        <app-data [eventId]="selectedEventId"></app-data>
+        <h2 class="center shiftDown">Guests</h2>
+        <app-guests [eventId]="selectedEventId" [guests]="this.guestService.shortList"></app-guests>
+      </div>
+  </div>
+
+</div>
+

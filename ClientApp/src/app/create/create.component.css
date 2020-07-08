@@ -1,0 +1,65 @@
+.center{
+    margin-top: 30px;
+    text-align: center;
+}
+
+form{
+    padding-left: 25%;
+    padding-right: 25%;
+}
+
+.number{
+    width: 100px;
+}
+
+
+.calendar {
+  font-family: "Font Awesome 5 Free";
+}
+
+label{
+    font-weight: bold;
+    font-size: 15px;
+}
+.normal{
+    font-weight: normal;
+}
+
+.italics {
+    font-style: italic;
+}
+.time {
+    width: 50%;
+}
+
+.btn-info {
+    margin-left: 5px;
+}
+
+.response {
+  margin-left: 10px;
+  margin-right: 10px;
+  font-weight: normal;
+  font-style: italic;
+}
+
+input[type=radio] {
+  width: 20px;
+  height: 20px;
+  margin-left: 5px;
+}
+
+input.ng-touched.ng-invalid {
+  border-color: orangered;
+}
+
+.thumb {
+  width: 50px;
+  height: auto;
+  cursor: pointer;
+}
+
+.submit {
+    font-size: 20px;
+    margin-bottom: 50px;
+}

@@ -1,0 +1,93 @@
+
+  <div *ngIf="dataService.showData">
+
+    <h3 class="center">Guest Data <button class="-orange btn btn-sm" style="margin-bottom: 18px" (click)="dataService.showData = false" type="button">Close</button></h3>
+
+
+
+    <div class="row">
+
+      <div class="col-md-4 right-border">
+
+        <h4 class="center"><b>Responses</b></h4>
+        <div class="row line addMargin">
+          <div class="col-md-8">
+            <h5>RSVPs</h5>
+          </div>
+          <div class="col-md-1">
+            <h5>{{dataService.responses}}</h5>
+          </div>
+        </div>
+
+        <div class="row line addMargin">
+          <div class="col-md-8">
+            <h5>RSVPs: Yes</h5>
+          </div>
+          <div class="col-md-1">
+            <h5>{{dataService.yeses}}</h5>
+          </div>
+        </div>
+
+        <div class="row addMargin">
+          <div class="col-md-8">
+            <h5>RSVPs: Yes + Addt'l Guests</h5>
+          </div>
+          <div class="col-md-1">
+            <h5>{{dataService.grandTotal}}</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 right-border">
+        <h4 class="center"><b>Invitations Sent</b></h4>
+
+        <table>
+          <tr class="line">
+            <th class="col-md-5">Sender</th>
+            <th class="col-md-5 forceInline"># Sent</th>
+            <th class="col-md-2"></th>
+          </tr>
+          <tr class="names" *ngFor="let data of dataService.shortData">
+            <td class="col-md-5" (click)="populateForm(data)">{{data.name}}</td>
+            <td class="col-md-5 under" (click)="populateForm(data)">{{data.guests}}</td>
+            <td class="col-md-2">
+              <button class="nothing" (click)="onDelete(data.id)" mat-icon-button>
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+          <tr class="gap">
+            <td class="col-md-5 forceInline"><b>Total Sent</b></td>
+            <td class="col-md-7">{{dataService.getTotal()}}</td>
+
+          </tr>
+        </table>
+
+
+      </div>
+
+      <div class="col-md-4">
+        <h4 class="center"><b>Update Invites Sent</b></h4>
+        <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+          <input type="hidden" name="id" [value]="dataService.formData.id" />
+          <input type="hidden" name="eventId" [value]="dataService.eventId" />
+          <div class="form-group">
+            <label>Sender </label>
+
+            <input placeholder="Name" name="name" #name="ngModel" [(ngModel)]="dataService.formData.name" minlength="1" class="form-control" required />
+          </div>
+
+          <div class="form-group">
+            <label>Invitations Sent </label>
+            <br />
+            <input placeholder="#" type="number" min="0" name="guests" #guests="ngModel" [(ngModel)]="dataService.formData.guests" class="form-control number" required />
+          </div>
+          <button class="-green btn btn-sm sub" type="submit">Submit</button>
+        </form>
+
+      </div>
+
+    </div>
+
+
+  </div>

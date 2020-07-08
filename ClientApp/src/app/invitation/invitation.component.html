@@ -1,0 +1,105 @@
+<div class="font" *ngIf="published">
+
+  <h1 class="invitation center">{{event.title}}</h1>
+
+  <div class="row ">
+    <div class="col-md-6 divider">
+
+      <img *ngIf="event.imgPath" img [src]="eventService.openImgPath(event.imgPath)" alt="{{event.title}} on {{event.date | date:'medium'}}" />
+      <div class="container invitation">
+        <div class="row">
+          <div class="col-md-5 center">
+            <h4>DATE</h4>
+            <h6>{{event.date | date:'mediumDate'}}</h6>
+            <h6>{{event.date | date:'shortTime'}}</h6>
+          </div>
+
+          <div class="col-md-1"></div>
+
+          <div class="col-md-5 center">
+            <h4>LOCATION</h4>
+            <h6>{{event.locationName}}</h6>
+            <h6>{{event.address1}}</h6>
+            <h6>{{event.address2}}</h6>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container col-md-4 rsvp">
+
+      <div *ngIf="response; else responded">
+        <h2 class="center">RSVP</h2>
+
+        <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+          <input type="hidden" name="GuestId" [value]="guestService.guestData.GuestId" />
+          <div class="form-group">
+            <label>Your Name:</label>
+            <input placeholder="Name" name="name" #name="ngModel"
+                   [(ngModel)]="guestService.guestData.name" class="form-control" minlength="5" maxlength="25" required />
+            <div *ngIf="(name.invalid && name.touched)">
+              <div *ngIf="name.errors.minlength">
+                Please include your full name
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email:</label>
+            <input placeholder="Email" name="email" #email="ngModel" [(ngModel)]="guestService.guestData.email" class="form-control" email required />
+            <div *ngIf="(email.invalid && email.touched)">
+              Please include a valid email
+            </div>
+          </div>
+
+          <div class="form-group down">
+            <label class="form-check-inline">
+              RSVP: <span class="normal">Yes</span>
+              <input type="radio" name="rsvp" #rsvp="ngModel" [(ngModel)]="guestService.guestData.rsvp" value="Yes" class="form-control form-check-input" required />
+            </label>
+            <label class="form-check-inline">
+              <span class="normal">No</span>
+              <input type="radio" name="rsvp" #rsvp="ngModel" [(ngModel)]="guestService.guestData.rsvp" value="No" class="form-control form-check-input" required />
+            </label>
+          </div>
+
+          <div *ngIf="event.friends > 0">
+            <div *ngIf="guestService.guestData.rsvp == 'Yes'" class="form-inline">
+              <label>Guests: </label>
+              <select id="myList" name="friends" class="response form-control float-right" #friends="ngModel" [(ngModel)]="guestService.guestData.friends">
+                <option *ngFor="let int of friendArray" [ngValue]="int">{{int}}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Message:</label>
+            <input name="message" #message="ngModel" [(ngModel)]="guestService.guestData.message" class="form-control" />
+          </div>
+
+          <div class="center form-group">
+            <button type="submit" [disabled]="form.invalid" class="btn -blue">RSVP</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #responded>
+
+  <div class="center">
+    <div *ngIf="guestService.guestData.rsvp == 'Yes'">
+      <h2>We look forward to seeing you!</h2>
+    </div>
+    <div *ngIf="guestService.guestData.rsvp == 'No'">
+      <h2>Thank you for responding!</h2>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #unpublished>
+  <h3 class="center">No Events Currently Scheduled</h3>
+</ng-template>
+
+
